@@ -10,10 +10,6 @@ import {
 } from "@/store/vehicles-slice";
 import { Categories, VehicleList } from "./_components";
 
-export const config = {
-  amp: true,
-};
-
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
   const status = useSelector(vehiclesStatus);
