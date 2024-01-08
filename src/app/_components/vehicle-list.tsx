@@ -36,6 +36,7 @@ export function VehicleList() {
                     alt={carType.vehicle}
                     width={720}
                     height={400}
+                    sizes="100vw"
                   />
                 </Link>
                 <div className="p-4">

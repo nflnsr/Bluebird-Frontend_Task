@@ -28,6 +28,7 @@ export function Categories() {
                   alt={category.name}
                   width={720}
                   height={400}
+                  sizes="100vw"
                 />
               </Link>
               <div className="p-4">

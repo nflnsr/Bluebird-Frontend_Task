@@ -6,11 +6,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "www.bluebirdgroup.com",
         port: "",
-        pathname: "/img/**/*",
+        pathname: "/img/armadaservicecars/**",
       },
     ],
   },
-  output: "standalone",
 };
 
 module.exports = nextConfig;
