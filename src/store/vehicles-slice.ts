@@ -6,6 +6,7 @@ import { VehicleCategory, VehicleType, CarType } from "@/types";
 type Data = {
   category: VehicleCategory[];
   type: VehicleType[];
+  myBook: CarType[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | undefined;
 };
@@ -13,6 +14,7 @@ type Data = {
 const initialState: Data = {
   category: [] as VehicleCategory[],
   type: [] as VehicleType[],
+  myBook: [] as CarType[],
   status: "idle",
   error: "",
 };
@@ -46,8 +48,18 @@ export const vehiclesSlice = createSlice({
           }
         });
       })
-      
     },
+    addToMyBook: (state, action) => {
+      const { id } = action.payload;
+      state.type.map((typeItem: VehicleType) => {
+        typeItem.car_type.map((carItem: CarType) => {
+          if (carItem.id === id) {
+            state.myBook.push(carItem);
+          }
+        });
+      })
+      console.log(state.myBook, 'myBook')
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(getVehiclesData.pending, (state) => {
@@ -76,9 +88,10 @@ export const vehiclesSlice = createSlice({
 
 export const selectVehiclesCategory = (state: { vehicles: Data }) => state.vehicles.category;
 export const selectVehiclesType = (state: { vehicles: Data }) => state.vehicles.type;
+export const selectMyBook = (state: { vehicles: Data }) => state.vehicles.myBook;
 export const vehiclesStatus = (state: { vehicles: Data }) => state.vehicles.status;
 export const vehiclesError = (state: { vehicles: Data }) => state.vehicles.error;
 
-export const { toggleLike } = vehiclesSlice.actions;
+export const { toggleLike, addToMyBook } = vehiclesSlice.actions;
 
 export default vehiclesSlice.reducer;

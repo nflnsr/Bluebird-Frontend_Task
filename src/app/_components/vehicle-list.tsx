@@ -55,7 +55,7 @@ export function VehicleList() {
                     {carType.price}
                   </Link>
 
-                  <div className="flex items-center">
+                  <div className="flex select-none items-center">
                     <span
                       onClick={() => {
                         dispatch(toggleLike({ id: carType.id }));
