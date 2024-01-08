@@ -13,12 +13,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  categories,
-  vehicles,
 }: {
   children: React.ReactNode;
-  categories: React.ReactNode;
-  vehicles: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -26,8 +22,6 @@ export default function RootLayout({
         <StoreProvider>
           <Header />
           {children}
-          {categories}
-          {vehicles}
         </StoreProvider>
       </body>
     </html>
