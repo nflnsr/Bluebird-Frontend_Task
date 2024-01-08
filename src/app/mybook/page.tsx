@@ -30,6 +30,7 @@ export default function MyBook() {
                   width={0}
                   height={0}
                   className="h-[155px] w-full min-[500px]:h-52 md:h-64"
+                  unoptimized
                 />
               </div>
               <div className=" max-w-1/3 rounded-lg bg-white px-4">

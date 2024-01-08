@@ -51,6 +51,7 @@ export default function Page({ params }: Props) {
               height={100}
               sizes="100vw"
               className="h-[155px] w-full min-[500px]:h-52 md:h-64"
+              unoptimized
             />
           </div>
           <div className="w-full max-w-72 rounded-xl bg-gray-50 px-5 py-8 ring-2 ring-slate-300 md:max-w-64 md:px-4">
