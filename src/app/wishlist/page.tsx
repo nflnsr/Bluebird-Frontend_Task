@@ -8,7 +8,6 @@ import Link from "next/link";
 
 export default function Wishlist() {
   const wishlist = useSelector(selectWishlist) as CarType[];
-  console.log(wishlist);
 
   return (
     <>
