@@ -4,30 +4,15 @@ import React from "react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useDebounce } from "@/hooks/useDebounce";
-import { useDispatch, useSelector } from "react-redux";
-import { selectVehiclesType, searchVehicleList, getVehiclesData } from "@/store/vehicles-slice";
-import { Vehicles } from "@/types";
+import { useDispatch } from "react-redux";
+import { searchVehicleList } from "@/store/vehicles-slice";
 
 export function Header() {
   const dispatch = useDispatch();
-  // const vehicles = useSelector(selectVehiclesType) as Vehicles[];
   const [searchValue, setSearchValue] = useState<string>("");
   const searchQuery = useDebounce(searchValue, 800);
-  const [vehicleList, setVehicleList] = useState<Vehicles[]>([]);
-
-  // useEffect(() => {
-  //   setVehicleList(vehicles);
-  // }, [vehicles]);
 
   useEffect(() => {
-    // const newVehicleList = vehicleList?.map(
-    //   (vehicles) =>
-    //     vehicles?.car_type?.filter((car) =>
-    //       car?.vehicle.toLowerCase().includes(String(searchQuery).toLowerCase()),
-    //     ),
-    // );
-    // dispatch(searchVehicleList(newVehicleList))
-    // setVehicleList(newVehicleList)
     dispatch(searchVehicleList(searchQuery) as any)
   }, [dispatch, searchQuery]);
 
