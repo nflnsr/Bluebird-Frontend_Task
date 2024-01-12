@@ -19,6 +19,7 @@ export function VehicleList() {
   const [newVehicles, setNewVehicles] = useState<Vehicles[]>([]);
   console.log(newVehicles, "newVehicles");
   console.log(newVehicles.length, "newVehicles.length");
+  console.log(searchValue, "searchValue");
 
   useEffect(() => {
     setNewVehicles(vehicles);
