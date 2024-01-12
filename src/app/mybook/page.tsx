@@ -20,7 +20,7 @@ export default function MyBook() {
         <h1 className="text-center text-2xl font-bold text-green-400">
           MyBook
         </h1>
-        <div className="my-8 grid grid-cols-1 gap-16 px-10 md:grid-cols-2 xl:px-36">
+        <div className="grid grid-cols-1 gap-16 px-10 py-8 md:grid-cols-2 xl:px-36">
           {myBook.map((list, index) => (
             <div
               key={index}
@@ -37,22 +37,28 @@ export default function MyBook() {
                   unoptimized
                 />
               </div>
-              <div className=" max-w-1/3 rounded-lg bg-white px-4">
+              <div className="max-w-1/3 rounded-lg bg-white px-4">
                 <p className="text-2xl font-bold">{list.vehicle}</p>
                 <p className="text-xl ">{list.price}</p>
               </div>
             </div>
           ))}
         </div>
-        <div className="w-full px-10 text-end text-xl font-semibold xl:px-36">
+        <div
+          className={`w-full px-10 text-end text-xl font-semibold xl:px-36 ${
+            (myBook.length === 1 && "mb-48") || (myBook.length === 2 && "mb-48")
+          }`}
+        >
           {total ? `Total: Rp.${total}` : ""}
         </div>
         {myBook.length === 0 && (
-          <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center">
-            <p>You have no books.</p>
-            <Link href="/" className="text-blue-400 underline">
-              Book Now!
-            </Link>
+          <div className="min-h-[calc(100svh-72px-80px-64px-32px)]">
+            <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center">
+              <p>You have no books.</p>
+              <Link href="/" className="text-blue-400 underline">
+                Book Now!
+              </Link>
+            </div>
           </div>
         )}
       </section>

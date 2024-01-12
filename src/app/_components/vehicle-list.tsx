@@ -11,14 +11,12 @@ export function VehicleList() {
   const dispatch = useDispatch();
   const vehiclesType = useSelector(selectVehiclesType) as VehicleType[];
 
-  console.log(vehiclesType, "vehiclesTypee");
-
   return (
     <>
       <h1 className="py-12 text-center text-3xl font-semibold text-green-400">
         Vehicle List
       </h1>
-      <section className="flex flex-wrap justify-center">
+      <section className="flex flex-wrap justify-center pb-10">
         {vehiclesType?.map((vehicleType: VehicleType) => (
           <div
             key={vehicleType.id}
