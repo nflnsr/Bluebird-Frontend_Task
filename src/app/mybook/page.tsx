@@ -2,13 +2,17 @@
 
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import {
-  selectMyBook,
-} from "@/store/vehicles-slice";
-import { CarType, VehicleType } from "@/types";
+import { selectMyBook } from "@/store/vehicles-slice";
+import { CarType } from "@/types";
+import Link from "next/link";
 
 export default function MyBook() {
   const myBook = useSelector(selectMyBook) as CarType[];
+  const total = myBook.reduce(
+    (acc, item) =>
+      acc + Number(item.price.replace("IDR ", "").replaceAll(".", "")),
+    0,
+  );
 
   return (
     <>
@@ -16,7 +20,7 @@ export default function MyBook() {
         <h1 className="text-center text-2xl font-bold text-green-400">
           MyBook
         </h1>
-        <div className="mt-8 grid grid-cols-1 gap-16 px-10 md:grid-cols-2 xl:px-36">
+        <div className="my-8 grid grid-cols-1 gap-16 px-10 md:grid-cols-2 xl:px-36">
           {myBook.map((list, index) => (
             <div
               key={index}
@@ -40,6 +44,17 @@ export default function MyBook() {
             </div>
           ))}
         </div>
+        <div className="w-full px-10 text-end text-xl font-semibold xl:px-36">
+          {total ? `Total: Rp.${total}` : ""}
+        </div>
+        {myBook.length === 0 && (
+          <div className="absolute left-1/2 top-1/2 w-full -translate-x-1/2 -translate-y-1/2 text-center">
+            <p>You have no books.</p>
+            <Link href="/" className="text-blue-400 underline">
+              Book Now!
+            </Link>
+          </div>
+        )}
       </section>
     </>
   );

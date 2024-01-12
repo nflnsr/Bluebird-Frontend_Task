@@ -79,14 +79,16 @@ export default function Page({ params }: Props) {
                 <p>{vehicle?.likes}</p>
               </div>
               <div>
-                <button
-                  className="rounded-lg bg-green-400 px-4 py-2 text-white"
-                  onClick={() => {
-                    dispatch(addToMyBook({ id: vehicle?.id }));
-                  }}
-                >
-                  <Link href="/mybook">Book Now</Link>
-                </button>
+                <Link href="/mybook">
+                  <button
+                    className="rounded-lg bg-green-400 px-4 py-2 text-white"
+                    onClick={() => {
+                      dispatch(addToMyBook({ id: vehicle?.id }));
+                    }}
+                  >
+                    Book Now
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

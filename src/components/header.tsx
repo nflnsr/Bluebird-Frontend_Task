@@ -139,12 +139,12 @@ export function Header() {
                 </li>
                 <li>
                   <Link href="/wishlist" className="text-green-500">
-                    About
+                    Wishlist
                   </Link>
                 </li>
                 <li>
-                  <Link href="mybook" className="text-green-500">
-                    Services
+                  <Link href="/mybook" className="text-green-500">
+                    MyBook
                   </Link>
                 </li>
               </ul>
