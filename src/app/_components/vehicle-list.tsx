@@ -17,6 +17,8 @@ export function VehicleList() {
   const vehicles = useSelector(selectVehiclesType) as Vehicles[];
   const searchValue = useSelector(selectSearchType) as string;
   const [newVehicles, setNewVehicles] = useState<Vehicles[]>([]);
+  console.log(newVehicles, "newVehicles");
+  console.log(newVehicles.length, "newVehicles.length");
 
   useEffect(() => {
     setNewVehicles(vehicles);
