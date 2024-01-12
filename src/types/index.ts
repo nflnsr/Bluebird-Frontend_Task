@@ -1,4 +1,4 @@
-export type CarType = {
+export type Car = {
   id: string;
   vehicle: string;
   imageURL: string;
@@ -11,10 +11,10 @@ export type CarType = {
   ): unknown;
 };
 
-export type VehicleType = {
+export type Vehicles = {
   id: string;
   category_id: string;
-  car_type: CarType[];
+  car_type: Car[];
 };
 
 export type VehicleCategory = {

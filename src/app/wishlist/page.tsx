@@ -3,12 +3,11 @@
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectWishlist } from "@/store/vehicles-slice";
-import { CarType } from "@/types";
+import { Car } from "@/types";
 import Link from "next/link";
 
 export default function Wishlist() {
-  const wishlist = useSelector(selectWishlist) as CarType[];
-  console.log(wishlist);
+  const wishlist = useSelector(selectWishlist) as Car[];
 
   return (
     <>
@@ -20,7 +19,9 @@ export default function Wishlist() {
           {wishlist.map((list, index) => (
             <div
               key={index}
-              className={`flex items-center justify-center rounded-lg bg-gray-100 max-[435px]:flex-col max-[435px]:pb-4 min-[435px]:pr-4 ${wishlist.length <= 2 && "mb-56"}`}
+              className={`flex items-center justify-center rounded-lg bg-gray-100 max-[435px]:flex-col max-[435px]:pb-4 min-[435px]:pr-4 ${
+                wishlist.length <= 2 && "mb-56"
+              }`}
             >
               <div className="relative h-full w-full max-w-96">
                 <Image
