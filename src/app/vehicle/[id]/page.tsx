@@ -8,7 +8,7 @@ import {
   toggleLike,
   addToMyBook,
 } from "@/store/vehicles-slice";
-import { CarType, VehicleType } from "@/types";
+import { Car, Vehicles } from "@/types";
 import { Love } from "@/assets/icon";
 import Image from "next/image";
 import Link from "next/link";
@@ -21,22 +21,17 @@ type Props = {
 
 export default function Page({ params }: Props) {
   const dispatch = useDispatch();
-  const vehiclesType = useSelector(selectVehiclesType) as VehicleType[];
-  const myBook = useSelector(selectMyBook) as CarType[];
-  const [vehicle, setVehicle] = useState<CarType>();
-  console.log(vehiclesType, "vehiclesTypee");
-  console.log(vehicle, "vehicle");
+  const vehiclesType = useSelector(selectVehiclesType) as Vehicles[];
+  const myBook = useSelector(selectMyBook) as Car[];
+  const [vehicle, setVehicle] = useState<Car>();
   useEffect(() => {
     vehiclesType?.map((vehicle) => {
       vehicle?.car_type.map((typeItem) => {
         if (typeItem.id === params.id) {
           setVehicle(typeItem);
         }
-        console.log(typeItem, "typeItem");
-        console.log(params.id, "id");
       });
     });
-    console.log(myBook, "myBookk");
   }, [params.id, vehiclesType, myBook]);
 
   return (
@@ -45,7 +40,7 @@ export default function Page({ params }: Props) {
         <div className="flex flex-col items-center justify-center gap-2 bg-gray-200 px-5 py-6 min-[435px]:px-16 md:flex-row md:gap-0 md:py-20">
           <div className="relative h-full w-full">
             <Image
-              src={vehicle?.imageURL || ""}
+              src={vehicle?.imageURL as string}
               alt="vehicle image"
               width={100}
               height={100}

@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectMyBook } from "@/store/vehicles-slice";
-import { CarType } from "@/types";
+import { Car } from "@/types";
 import Link from "next/link";
 
 export default function MyBook() {
-  const myBook = useSelector(selectMyBook) as CarType[];
+  const myBook = useSelector(selectMyBook) as Car[];
   const total = myBook.reduce(
     (acc, item) =>
       acc + Number(item.price.replace("IDR ", "").replaceAll(".", "")),

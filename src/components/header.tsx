@@ -1,8 +1,36 @@
+"use client";
+
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useDebounce } from "@/hooks/useDebounce";
+import { useDispatch, useSelector } from "react-redux";
+import { selectVehiclesType, searchVehicleList, getVehiclesData } from "@/store/vehicles-slice";
+import { Vehicles } from "@/types";
 
 export function Header() {
+  const dispatch = useDispatch();
+  // const vehicles = useSelector(selectVehiclesType) as Vehicles[];
+  const [searchValue, setSearchValue] = useState<string>("");
+  const searchQuery = useDebounce(searchValue, 800);
+  const [vehicleList, setVehicleList] = useState<Vehicles[]>([]);
+
+  // useEffect(() => {
+  //   setVehicleList(vehicles);
+  // }, [vehicles]);
+
+  useEffect(() => {
+    // const newVehicleList = vehicleList?.map(
+    //   (vehicles) =>
+    //     vehicles?.car_type?.filter((car) =>
+    //       car?.vehicle.toLowerCase().includes(String(searchQuery).toLowerCase()),
+    //     ),
+    // );
+    // dispatch(searchVehicleList(newVehicleList))
+    // setVehicleList(newVehicleList)
+    dispatch(searchVehicleList(searchQuery) as any)
+  }, [dispatch, searchQuery]);
+
   return (
     <>
       <header className="sticky top-0 z-50">
@@ -75,6 +103,10 @@ export function Header() {
                   id="search-navbar"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm focus:outline-lime-500"
                   placeholder="Search..."
+                  name="search"
+                  maxLength={99}
+                  value={searchValue}
+                  onChange={(e) => setSearchValue(e.target.value)}
                 />
               </div>
               <button
@@ -124,12 +156,12 @@ export function Header() {
                     />
                   </svg>
                 </div>
-                <input
+                {/* <input
                   type="text"
                   id="search-navbar"
                   className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2 ps-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
                   placeholder="Search..."
-                />
+                /> */}
               </div>
               <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-white md:p-0 rtl:space-x-reverse dark:border-gray-700 dark:bg-gray-800 md:dark:bg-gray-900">
                 <li>
