@@ -11,6 +11,7 @@ export function Header() {
   const dispatch = useDispatch();
   const [searchValue, setSearchValue] = useState<string>("");
   const searchQuery = useDebounce(searchValue, 800);
+  console.log(searchQuery, "searchQuery");
 
   useEffect(() => {
     dispatch(searchVehicleList(searchQuery) as any)
