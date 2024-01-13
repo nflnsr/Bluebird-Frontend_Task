@@ -34,13 +34,14 @@ export function VehicleList() {
             .includes(String(searchValue).toLowerCase()),
       );
     });
-    setNewVehicles(newVehicles.map((vehicles, index) => {
+    console.log(newVehicleList, "newVehicleList")
+    setNewVehicles(vehicles.map((vehicles, index) => {
       return {
         ...vehicles,
         car_type: newVehicleList[index]
       }
     }))
-  }, [searchValue]);
+  }, [searchValue, vehicles]);
 
   return (
     <>
